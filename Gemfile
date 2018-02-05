@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'bootstrap'
 
+gem 'faraday'
 gem 'active_model_serializers'
 gem 'rack-cors'
 
@@ -40,7 +41,7 @@ gem 'font-awesome-rails'
 gem 'simple_form'
 
 gem 'jwt'
-# gem 'webpacker', '~> 3.0.0'
+gem 'webpacker', '~> 3.0.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
