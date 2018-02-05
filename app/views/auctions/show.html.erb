@@ -1,0 +1,64 @@
+<h2><%= @auction.title %></h2>
+
+<p><%= @auction.details %></p>
+<p>By
+  <% if @auction.user %>
+    <%= @auction.user.full_name %>
+  <% else %>
+    <%= "[deleted]" %>
+  <% end %>
+</p>
+<p><strong>Reserve Price: </strong><%= @auction.reserve_price %></p>
+
+<p><strong>End Date: </strong><%= @auction.end_date.to_formatted_s %></p>
+
+<% if can?(:crud, @auction) %>
+  <%= link_to 'Edit', edit_auction_path(@auction) %>
+  <%=
+    link_to(
+     'Delete',
+     auction_path(@auction),
+     method: :delete,
+     data: {confirm: 'Are you sure?'}
+    )
+  %>
+<% end %>
+
+<%# If we want to create a form for a model that is nested in/belongs to another model, we
+must give 'form_for' both models in an array as its arguments where the first element of
+the array is the model instance that the second element belongs to. 👇🏽 %>
+<%= simple_form_for [@auction, @bid] do |f| %>
+  <% if @bid.errors.present? %>
+    <p>
+      <%= @bid.errors.full_messages.join(', ') %>
+    </p>
+  <% end %>
+  <div>
+    <%= f.input :bid_price, placeholder: 'Bid Price', label: false %>
+  </div>
+
+  <%= f.submit 'Bid' %>
+<% end %>
+
+<h2>Previous Bids</h2>
+<div class="bid-list">
+  <% @bids.each do |bid| %>
+    <div class="bid-list-item">
+      <p><%= number_to_currency(bid.bid_price) %></p>
+      <p>By <%= bid.user&.full_name || "[deleted]" %></p>
+      <p>
+        <strong>Created At: </strong>
+        <%=time_ago_in_words(bid.created_at)%> ago
+
+      <% if can?(:destroy, bid) %>
+        <%= link_to(
+          'Delete',
+          bid,
+          data: {confirm: 'Are you sure?'},
+          method: :delete
+          ) %>
+      <% end %>
+      </p>
+    </div>
+  <% end %>
+</div>
