@@ -20,7 +20,7 @@ class Api::V1::AuctionsController < Api::ApplicationController
 
   def update
     if @auction.update(auction_params)
-      render json: {id: auction.id}
+      render json: {id: @auction.id}
     else
       head :bad_request
     end
