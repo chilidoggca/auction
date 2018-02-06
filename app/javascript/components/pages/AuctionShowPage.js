@@ -101,12 +101,12 @@ class AuctionShowPage extends Component {
         <button
           onClick={this.delete}
         >Delete</button>
-        {/* <BidForm
+        <BidForm
           errors={validationErrors}
           bid={newBid}
           onChange={this.updateNewBid}
           onSubmit={this.createBid}
-         /> */}
+         />
         <h3>Previous Bids</h3>
         <BidList
           bids={bids}

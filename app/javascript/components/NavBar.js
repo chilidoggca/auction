@@ -36,14 +36,22 @@ function NavBar (props) {
           >
             Sign Out
           </a>
-        ]) : (
+        ]) : ([
           <Link
             style={{marginLeft: 'auto', marginRight: '20px'}}
             to="/sign_in"
+            key='1'
           >
               Sign In
+          </Link>,
+          <Link
+            style={{marginRight: '20px'}}
+            to="/sign_up"
+            key='2'
+          >
+              Sign Up
           </Link>
-        )
+        ])
       }
       <CurrentDateTime />
     </nav>
