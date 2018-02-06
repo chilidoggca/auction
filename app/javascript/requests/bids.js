@@ -6,10 +6,10 @@ function getJwt() {
 
 // HTTP REQUESTS
 
-export const Auction = {
-  create (params) {
+export const Bid = {
+  create (params, id) {
     return fetch(
-      `${BASE_URL}/api/v1/auctions/${id}`,
+      `${BASE_URL}/api/v1/auctions/${id}/bids`,
       {
         method: 'POST',
         headers: {

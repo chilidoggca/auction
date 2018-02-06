@@ -24,8 +24,8 @@ function BidForm (props) {
       onSubmit={handleSubmit}
     >
       <div>
-        <label htmlFor="bid_price">Bid Price</label> <br />
         <input
+          placeholder="Bid Price"
           onChange={handleChange("bid_price")}
           value={bid.bid_price}
           name="bid_price"
@@ -33,9 +33,6 @@ function BidForm (props) {
           type="number"
         />
         <FormErrors forField='bid_price' errors={errors} />
-      </div>
-
-      <div>
         <input type="submit" value="Submit"/>
       </div>
     </form>
