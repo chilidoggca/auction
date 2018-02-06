@@ -92,6 +92,7 @@ class AuctionShowPage extends Component {
     const {auction, loading} = this.state;
     const {bids = []} = auction;
     const {newBid = {}} = auction;
+    const {validationErrors=[]} = this.state;
     const {id = ''} = auction;
 
     if (loading) {
@@ -115,7 +116,7 @@ class AuctionShowPage extends Component {
           onClick={this.delete}
         >Delete</button>
         <BidForm
-          // errors={validationErrors}
+          errors={validationErrors}
           bid={newBid}
           onChange={this.updateNewBid}
           onSubmit={this.createBid}
