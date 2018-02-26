@@ -83,7 +83,9 @@ class App extends Component {
             <Route path="/sign_in" render={props => {
               return <SignInPage {...props} onSignIn={this.signIn} />
             }} />
-            <Route path="/sign_up" component={SignUpPage} />
+            <Route path="/sign_up" render={props => {
+              return <SignUpPage {...props} onSignUp={this.signIn} />
+            }} />
             <AuthRoute
               isAuthenticated={this.isAuth()}
               path="/auctions"

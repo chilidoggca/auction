@@ -34,8 +34,8 @@ class SignUpPage extends Component {
         if (!data.error) {
           const {jwt} = data;
           localStorage.setItem('jwt', jwt);
-          onSignUp();
           this.props.history.push("/");
+          onSignUp();
         }
       });
   }
