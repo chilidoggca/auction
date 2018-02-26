@@ -13,7 +13,9 @@ class AuctionShowPage extends Component {
     this.state = {
       loading: true,
       auction: {
-        newBid: {},
+        newBid: {
+          // bid_price: ""
+        },
         bids: []
       },
     };
@@ -34,18 +36,33 @@ class AuctionShowPage extends Component {
   deleteBid (bidId) {
     const {auction} = this.state;
     const {bids} = auction;
-    this.setState({
-      auction: {
-        ...auction,
-        bids: bids.filter(bid => bid.id !== bidId)
-      }
-    })
+
+    Bid
+      .destroy(bidId)
+      .then(data => {
+        if (data.errors) {
+          this.setState({
+            validationErrors: data
+              .errors
+              .filter(e => e.type === 'ActiveRecord::RecordInvalid')
+          });
+        } else {
+          // console.log(data);
+          this.setState({
+            auction: {
+              ...auction,
+              bids: [...data.bids]
+            }
+          })
+        }
+      });
   }
 
   updateNewBid (data) {
     const {auction} = this.state;
     const {newBid} = auction;
     const {id} = auction;
+    // const {bid_price} = newBid;
 
     this.setState({
       auction: {
@@ -56,8 +73,9 @@ class AuctionShowPage extends Component {
   }
 
   createBid () {
-    const {history} = this.props;
+    const {auction} = this.state;
     const {newBid} = this.state.auction;
+    // const {bid_price} = newBid;
     const {id} = this.state.auction;
 
     // console.log(newBid);
@@ -71,7 +89,14 @@ class AuctionShowPage extends Component {
               .filter(e => e.type === 'ActiveRecord::RecordInvalid')
           });
         } else {
-          history.push(`/auctions/${data.id}`)
+          console.log(data);
+          // console.log([...this.state.bids]);
+          this.setState({
+            auction: {
+              ...auction,
+              bids: [...data.bids]
+            }
+          })
         }
       });
   }
@@ -113,6 +138,7 @@ class AuctionShowPage extends Component {
       >
         <AuctionDetails {...this.state.auction} />
         <button
+          className="btn btn-outline-secondary m-2"
           onClick={this.delete}
         >Delete</button>
         <BidForm

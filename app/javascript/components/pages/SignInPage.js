@@ -30,8 +30,8 @@ class SignInPage extends Component {
         if (!data.error) {
           const {jwt} = data;
           localStorage.setItem('jwt', jwt);
-          this.props.history.push("/");
           onSignIn();
+          this.props.history.push("/");
         }
       });
   }

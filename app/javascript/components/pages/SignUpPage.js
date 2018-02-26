@@ -27,15 +27,15 @@ class SignUpPage extends Component {
   createUser (event) {
     event.preventDefault();
     const {onSignUp = () => {}} = this.props;
-    const {email, password} = this.state;
+    const {first_name, last_name, email, password, password_confirmation} = this.state;
     User
-      .create({email, password})
+      .create({"user": {first_name, last_name, email, password, password_confirmation}})
       .then(data => {
         if (!data.error) {
           const {jwt} = data;
           localStorage.setItem('jwt', jwt);
-          this.props.history.push("/");
           onSignUp();
+          this.props.history.push("/");
         }
       });
   }

@@ -9,6 +9,8 @@ function BidForm (props) {
     errors = []
   } = props;
 
+  const {bid_price = ""} = bid;
+
   const handleSubmit = event => {
     event.preventDefault();
     onSubmit();
@@ -20,20 +22,21 @@ function BidForm (props) {
 
   return (
     <form
-      className="BidForm"
+      className="BidForm form-inline m-2"
       onSubmit={handleSubmit}
     >
       <div>
         <input
           placeholder="Bid Price"
           onChange={handleChange("bid_price")}
-          value={bid.bid_price}
+          value={bid_price}
           name="bid_price"
           id="bid_price"
           type="number"
+          className="form-control mr-2"
         />
         <FormErrors forField='bid_price' errors={errors} />
-        <input type="submit" value="Submit"/>
+        <input type="submit" className="btn btn-outline-secondary" value="Submit"/>
       </div>
     </form>
   );

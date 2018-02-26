@@ -5,11 +5,11 @@ class Api::V1::UsersController < Api::ApplicationController
     if @user.save
       render json: {
         jwt: encode_token({
-            id: user.id,
-            first_name: user.first_name,
-            last_name: user.last_name,
-            full_name: user.full_name,
-            email: user.email
+            id: @user.id,
+            first_name: @user.first_name,
+            last_name: @user.last_name,
+            full_name: @user.full_name,
+            email: @user.email
           })
       }
     else
