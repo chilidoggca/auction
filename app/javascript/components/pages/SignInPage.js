@@ -70,7 +70,7 @@ class SignInPage extends Component {
           </div>
 
           <div>
-            <input type='submit' value='Sign In'/>
+            <input type='submit' value='Sign In' className="btn btn-outline-secondary" />
           </div>
         </form>
       </main>

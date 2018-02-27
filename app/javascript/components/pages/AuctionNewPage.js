@@ -54,7 +54,7 @@ class AuctionNewPage extends Component {
         className="AuctionNewPage"
         style={{padding: '0  20px'}}
       >
-        <h2>Auctions</h2>
+        <h2>New Auction</h2>
         <AuctionForm
           errors={validationErrors}
           auction={newAuction}

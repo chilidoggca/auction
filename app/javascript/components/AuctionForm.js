@@ -70,7 +70,7 @@ function AuctionForm (props) {
       </div>
 
       <div>
-        <input type="submit" value="Submit"/>
+        <input type="submit" value="Submit" className="btn btn-outline-secondary" />
       </div>
     </form>
   );

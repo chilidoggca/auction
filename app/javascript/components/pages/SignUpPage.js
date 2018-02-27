@@ -107,7 +107,7 @@ class SignUpPage extends Component {
           </div>
 
           <div>
-            <input type='submit' value='Sign Up'/>
+            <input type='submit' value='Sign Up' className="btn" />
           </div>
         </form>
       </main>
