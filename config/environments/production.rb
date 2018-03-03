@@ -1,9 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # added this to serve images from assets folder
-  config.assets.digest = true
-
   # Code is not reloaded between requests.
   config.cache_classes = true
 
