@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../components/App';
-import {ready} from '../utilities';
+import {ready, navbarStyling} from '../utilities';
 
 ready(() => {
   // Instead of using a node that's already in the html page to
@@ -13,4 +13,5 @@ ready(() => {
     <App />,
     rootDiv
   )
+  navbarStyling();
 });

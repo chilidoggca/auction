@@ -12,12 +12,13 @@ function NavBar (props) {
 
   return (
     <nav
+      className="navbar fixed-top"
       style={{
         padding: '10px',
         display: 'flex',
       }}
     >
-      <Link style={{marginRight: '20px'}} to="/">Home</Link>
+      <Link style={{marginRight: '20px'}} to="/">&nbsp;Auction.&nbsp;</Link>
       <Link style={{marginRight: '20px'}} to="/auctions/new">New Auction</Link>
       <Link to="/auctions">Auctions</Link>
       {

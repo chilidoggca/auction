@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Token} from '../../requests/tokens';
+import {GuestUserSignIn} from '../GuestUserSignIn';
 
 class SignInPage extends Component {
   constructor (props) {
@@ -11,6 +12,7 @@ class SignInPage extends Component {
     };
 
     this.createToken = this.createToken.bind(this);
+    this.signInGuestUser = this.signInGuestUser.bind(this);
   }
 
   handleChange (name) {
@@ -26,6 +28,21 @@ class SignInPage extends Component {
     const {email, password} = this.state;
     Token
       .create({email, password})
+      .then(data => {
+        if (!data.error) {
+          const {jwt} = data;
+          localStorage.setItem('jwt', jwt);
+          this.props.history.push("/");
+          onSignIn();
+        }
+      });
+  }
+
+  signInGuestUser (event) {
+    const {onSignIn = () => {}} = this.props;
+    event.preventDefault();
+    Token
+      .create({email: 'a@a.com', password: 'supersecret'})
       .then(data => {
         if (!data.error) {
           const {jwt} = data;
@@ -73,6 +90,7 @@ class SignInPage extends Component {
             <input type='submit' value='Sign In' className="btn btn-outline-secondary" />
           </div>
         </form>
+        <GuestUserSignIn onSignInGuestUserClick={this.signInGuestUser} />
       </main>
     )
   }

@@ -6,7 +6,7 @@ function HomePage (props) {
       className='HomePage'
       style={{padding: '0 20px'}}
     >
-      <h1>Welcome to AwesomeAuction!</h1>
+      <h1>Welcome to Auction. !</h1>
     </main>
   );
 }

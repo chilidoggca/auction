@@ -9,6 +9,7 @@ function BidDetails (props) {
       <p>${props.bid_price} by {props.bidder_full_name}</p>
       <Field name="Created At" value={props.created_at} />
       <button
+        className="btn"
         onClick={() => onDeleteClick(props.id)}
       >Delete</button>
     </div>

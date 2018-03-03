@@ -63,6 +63,7 @@ class AuctionIndexPage extends Component {
                 </Link>
                 <Field name="Auction Owner" value={auction.auction_owner.full_name} />
                 <button
+                  className="btn"
                   onClick={this.deleteAuction(auction.id)}
                 >Delete</button>
               </li>

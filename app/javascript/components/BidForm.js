@@ -22,7 +22,7 @@ function BidForm (props) {
 
   return (
     <form
-      className="BidForm form-inline m-2"
+      className="BidForm"
       onSubmit={handleSubmit}
     >
       <div>
@@ -33,10 +33,10 @@ function BidForm (props) {
           name="bid_price"
           id="bid_price"
           type="number"
-          className="form-control mr-2"
+
         />
         <FormErrors forField='bid_price' errors={errors} />
-        <input type="submit" className="btn btn-outline-secondary" value="Submit"/>
+        <input type="submit" className="btn" value="Place Bid!" />
       </div>
     </form>
   );
