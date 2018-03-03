@@ -1,1 +1,1 @@
-export const BASE_URL = 'http://awesomeauction.herokuapp.com/';
+export const BASE_URL = 'https://awesomeauction.herokuapp.com/';
