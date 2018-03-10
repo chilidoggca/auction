@@ -18,6 +18,7 @@ class AuctionShowPage extends Component {
         },
         bids: []
       },
+      validationErrors: []
     };
 
     this.createBid = this.createBid.bind(this);
@@ -28,9 +29,26 @@ class AuctionShowPage extends Component {
   }
 
   delete () {
-    this.setState({
-      auction: {}
-    });
+    const {auction} = this.state;
+    const {id} = auction;
+    const {history} = this.props;
+    // console.log(this.props);
+    Auction
+      .destroy(id)
+      .then(data => {
+        history.push(`/auctions`);
+        // if (data.errors) {
+        //   this.setState({
+        //     validationErrors: data
+        //       .errors
+        //       .filter(e => e.type === 'ActiveRecord::RecordInvalid')
+        //   });
+        //   console.log(this.state.validationErrors);
+        // } else {
+        //   console.log(data);
+        //   history.push(`/auctions`);
+        // }
+      });
   }
 
   deleteBid (bidId) {

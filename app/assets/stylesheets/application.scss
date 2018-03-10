@@ -127,3 +127,11 @@ form > div, .btn {
     margin: 0.5em;
   }
 }
+
+div.auctionItemDiv {
+  padding: 0.375em;
+  &:hover {
+    background: rgba(255,255,255,0.05);
+    transition: background .3s ease;
+  }
+}

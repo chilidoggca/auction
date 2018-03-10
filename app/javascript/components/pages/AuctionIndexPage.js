@@ -18,9 +18,12 @@ class AuctionIndexPage extends Component {
   deleteAuction (auctionId) {
     return () => {
       const {auctions} = this.state;
-      this.setState({
-        auctions: auctions
-        .filter(auction => auction.id !== auctionId)
+      Auction.destroy(auctionId).then(data => {
+        this.setState({
+          auctions: data
+        });
+      }).catch(function(error) {
+        console.log('Sorry: ', error.message);
       });
     }
   }
@@ -36,6 +39,7 @@ class AuctionIndexPage extends Component {
 
   render () {
     const {loading} = this.state;
+    const {auctions} = this.state;
 
     if (loading) {
       return (
@@ -54,22 +58,25 @@ class AuctionIndexPage extends Component {
         style={{padding: '0  20px'}}
       >
         <h2>Auctions</h2>
-        <ul style={{paddingLeft: '10px'}}>
+        <div style={{paddingLeft: '10px'}}>
           {
             this.state.auctions.map(auction => (
-              <li key={auction.id}>
+              <div key={auction.id} className="auctionItemDiv">
                 <Link to={`/auctions/${auction.id}`}>
                   {auction.title}
                 </Link>
                 <Field name="Auction Owner" value={auction.auction_owner.full_name} />
-                <button
-                  className="btn"
-                  onClick={this.deleteAuction(auction.id)}
-                >Delete</button>
-              </li>
+                {
+                  (true) ?
+                  <button
+                    className="btn"
+                    onClick={this.deleteAuction(auction.id)}
+                  >Delete</button> : ''
+                }
+              </div>
             ))
           }
-        </ul>
+        </div>
       </main>
     );
   }

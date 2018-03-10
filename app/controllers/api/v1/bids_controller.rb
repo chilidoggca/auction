@@ -42,8 +42,7 @@ class Api::V1::BidsController < Api::ApplicationController
 
   def authorize_user!
     unless can?(:crud, @bid)
-      flash[:alert] = "Access Denied."
-      redirect_to home_path
+      head :bad_request
     end
   end
 end
