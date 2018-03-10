@@ -2,6 +2,8 @@
 
 Auction is an eBay/Amazon inspired project with a React front end and Rails RESTful API back end.
 
+https://awesomeauction.herokuapp.com/client
+
 ## Features
 - User JWT authentication.
 - Responsive React front end client.
@@ -9,9 +11,9 @@ Auction is an eBay/Amazon inspired project with a React front end and Rails REST
 
 ## Screen Shot
 ![Auction Auction Show Page](/public/screenshot-4.jpg)
-Users can create auctions and bid on other users's auctions.
+Users can create auctions and bid on other users' auctions.
 
-## Setup
+## Setup Instructions
 1. After cloning the repo, run the following commands in CLI:
 ```
 $ rails db:migrate
