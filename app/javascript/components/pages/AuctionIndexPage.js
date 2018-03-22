@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Field} from '../Field';
 import {Auction} from '../../requests/auctions';
 import {Link} from 'react-router-dom';
+import {AuctionList} from '../../containers/AuctionList';
 
 class AuctionIndexPage extends Component {
   constructor (props) {
